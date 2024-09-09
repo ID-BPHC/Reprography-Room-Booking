@@ -1,13 +1,13 @@
-version: '3.8'
+version: "3.8"
 
 services:
   web:
     build: ./
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:7000
     volumes:
       - ./:/usr/src/app/
     ports:
-      - 8000:8000
+      - 7000:7000
     env_file:
       - ./.env.dev
     depends_on:
@@ -22,13 +22,13 @@ services:
       - POSTGRES_USER=$DATABASE_USER
       - POSTGRES_PASSWORD=$DATABASE_PASSWORD
       - POSTGRES_DB=$DATABASE_NAME
-  
+
   frontend:
     build:
       context: ./frontend
       dockerfile: ./Dockerfile
     ports:
-      - 3000:3000
+      - 6000:6000
     volumes:
       - ./frontend/:/usr/src/app/
 
